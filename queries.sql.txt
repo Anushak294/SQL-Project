@@ -1,0 +1,87 @@
+Sample queries
+
+--Get all employee details
+select * from employee
+
+--Display the details of employee its name start with 'r'. 	
+select * from employee
+where EmpName like 'r%'
+
+--Display oldest employee details
+select top 1 * from employee
+order by EmpDOB 
+
+--Display the details of employee its name second char is 'a'
+select * from employee
+where EmpName like '_a%'
+
+--Display the details of female employee who are born in 1995
+select * from employee
+where EmpGender='F' and year(EmpDOB)=1995
+
+--Display the details of employee(both male and female) having maximum salary
+select * from Employee
+where EmpSalary =(select max(EmpSalary)
+                  from Employee)
+
+
+--Display all records but replace domain name 
+--like ami@gmail.com to ami@ymail.com 
+select EmpName, 
+replace(EmpEmail,'gamil.com','ymail.com')as Email
+from Employee
+
+--Get only second highest salary 
+select max(EmpSalary) from Employee
+where EmpSalary<(select max(EmpSalary) as max_salary from Employee)
+
+---Display the employee age (like 25 year old ).  Datedifference(‘year’, age, getdate()) + “Year old” 
+select EmpName,datediff(year,EmpDOB,getdate()) as age
+from Employee
+
+---Update the employee name first letter capital
+update Employee
+set EmpName=upper(left(EmpName,1)) 
+
+--Display the count of employee by gender
+select  EmpGender,
+count(*) as totalemployees
+from Employee
+group by EmpGender
+
+---Add column EmpContactNo and apply check constraints for contact number
+alter table Employee
+add EmpContactNo bigint
+check(EmpContactNo between 1000000000 and 9999999999)
+
+--Display name, salary, dob, doj of employee with its CompanyName, CityName, StateName who are not belong to any state. 
+select
+e.EmpName,e.EmpSalary,e.EmpDOB,e.EmpDOJ,
+co.CompanyName,
+ci.CityName,
+s.StateName
+from Employee e
+left join Company co
+on e.CompanyID=co.CompanyID
+left join City ci
+on co.CityID=ci.CityID
+left join State s
+on ci.StateID=s.StateID
+where s.StateID IS NULL;
+
+---List the name, salary, dob of employee with its CompanyName, CityName, StateName. working at ' R K Infotech ' and ' Vexil Infotech ' and its salary is > 15000, but the salary should not be 33500. 
+select
+e.EmpName,e.EmpSalary,e.EmpDOB,e.EmpDOJ,
+co.CompanyName,
+ci.CityName,
+s.StateName
+from Employee e
+left join Company co
+on e.CompanyID=co.CompanyID
+left join City ci
+on co.CityID=ci.CityID
+left join State s
+on ci.StateID=s.StateID
+WHERE co.CompanyName IN ('R K Infotech','Vexil Infotech')
+AND e.EmpSalary > 15000
+AND e.EmpSalary <> 33500;

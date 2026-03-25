@@ -1,0 +1,43 @@
+
+insert into state
+values('Gujarat'),
+      ('Rajasthan'),
+	  ('Uttar Pradesh')
+
+
+insert into City
+values('Rajkot',1),
+      ('Gandhinagar',1),
+	  ('Jaipur',2),
+	  ('Udaipur',2),
+	  ('Lucknow',3),
+	  ('Kanpur',3),
+	  ('Varanasi',3)
+--Insert sample data
+
+insert into Company
+values('R K Infotech ',1),
+      ('Brevity Software ',1),
+	  ('Evision IT Solutions',2),
+	  ('Hope IT Hub ',2),
+	  ('Octal IT Solutions ',3),
+	  ('Kansoft Solutions ',4),
+	  ('Vexil Infotech ',5),
+	  ('BillionByte IT Solutions ',6),
+	  ('Panacia Software ',6),
+	  ('Oceonic IT Solutions ',7),
+	  ('MRS Technology ',7),
+	  ('IPX Technology ',7)
+
+
+insert into Employee
+values('AnilKumar','1967-05-09','M','2005-10-25','anil@gmail.com',50000,1,1),
+('Deepika','2001-03-20','F','2020-05-26','deepika@gmail.com','20000',4,2),
+('Rahul','1999-04-23','M','2019-08-12','rahul@gmail.com','30000',5,3),
+('Harsh','2000-12-03','F','2021-01-18','harsha@gmail.com','15000',2,1),
+('Hitesh','1992-02-19','M','2010-09-16','hitesh@gmail.com','37000',7,5),
+('Rajiv','1995-08-14','F','2015-07-11','rajvi@gmail.com','25000',11,7),
+('Kunal','1998-03-09','M','2020-11-14','kunal@gmail.com','18000',1,1)
+
+
+

@@ -1,0 +1,27 @@
+
+-- Create Database and Tables
+create database EmployeeDBB
+use EmployeeDBB
+
+create table state(StateID int primary key identity(1,1),
+			   StateName varchar(50))
+
+
+create table City(CityID int primary key identity(1,1),
+                 CityName varchar(50),
+		 StateID int)
+
+create table Company(CompanyID int primary key identity(1,1),
+                    CompanyName varchar(50),
+		    CityID int)
+
+create table Employee(EmpID int primary key identity(1,1), 
+					EmpName varchar(50), 
+					EmpDOB date, 
+					EmpGender varchar(6), 
+					EmpDOJ date, 
+					EmpEmail varchar(50), 
+					EmpSalary int, 
+					CompanyID int, 
+					CityID int)  
+
